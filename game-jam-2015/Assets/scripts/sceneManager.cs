@@ -24,7 +24,7 @@ public class sceneManager : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (objectQueue.Peek().localPosition.x + offset * 2 < move.distanceTraveled) {
+		if (objectQueue.Peek().localPosition.x + offset * 3 < move.distanceTraveled) {
 			nextPosition.x = objectQueue.Peek().localPosition.x + offset * numberOfObjects;
 			Transform trash = objectQueue.Dequeue();
 			GameObject t = trash.gameObject;
