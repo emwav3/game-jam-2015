@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class PlayerCollision : MonoBehaviour {
-
+	public GameState points;
 	// Use this for initialization
 	void Start () {
 	
@@ -14,9 +14,10 @@ public class PlayerCollision : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D coll){
+		points = (GameState)GetComponent<GameState> ();
 		//If player collides with the coin
-		if (coll.gameObject.tag == "Coin") {
-				
+		if (coll.gameObject.tag == "coin") {
+			points.points += 1;		
 		}
 	}
 }
