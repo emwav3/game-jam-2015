@@ -32,7 +32,7 @@ public class PlayerCollision : MonoBehaviour {
 			Destroy(collider.gameObject);
 		}
 		//If the player collides with a powerUp box
-		if (collider.gameObject.tag == "Powerup") {
+		if (collider.gameObject.tag == "powerUp") {
 			randomNum = Random.Range(0, powerUps.Length);
 			powerUp = powerUps[randomNum];
 			if(powerUp.tag == "fireball"){

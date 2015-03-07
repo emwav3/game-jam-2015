@@ -13,11 +13,11 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(hasFireball == true){
-
+			Debug.Log("fireball");
 			hasFireball = false;
 		}
 		else if(hasRocket == true){
-
+			Debug.Log("rocket");
 			hasRocket = false;
 		}
 	}
