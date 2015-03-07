@@ -25,14 +25,11 @@ public class sceneManager : MonoBehaviour {
 	
 	void Update () {
 		if (objectQueue.Peek().localPosition.x + offset * 2 < move.distanceTraveled) {
-			nextPosition.x = objectQueue.Peek().localPosition.x + offset * 4;
+			nextPosition.x = objectQueue.Peek().localPosition.x + offset * numberOfObjects;
 			Transform trash = objectQueue.Dequeue();
 			GameObject t = trash.gameObject;
 			Destroy(t);
-			//Transform o = objectQueue.Dequeue();
-			//o.localPosition = nextPosition;
-			//nextPosition.x += o.localScale.x;
-			Transform o = (Transform)Instantiate(array[Random.Range(0,array.Length)]);
+			Transform o = (Transform)Instantiate(array[Random.Range(0 ,array.Length)]);
 			o.localPosition = nextPosition;
 			objectQueue.Enqueue(o);
 		}
