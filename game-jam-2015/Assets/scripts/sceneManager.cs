@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class sceneManager : MonoBehaviour {
 	
 	public Transform prefab;
+	public Transform[] array;
 	public int numberOfObjects;
 	public float offset;
 	public Vector3 startPosition;
@@ -31,7 +32,7 @@ public class sceneManager : MonoBehaviour {
 			//Transform o = objectQueue.Dequeue();
 			//o.localPosition = nextPosition;
 			//nextPosition.x += o.localScale.x;
-			Transform o = (Transform)Instantiate(prefab);
+			Transform o = (Transform)Instantiate(array[Random.Range(0,array.Length)]);
 			o.localPosition = nextPosition;
 			objectQueue.Enqueue(o);
 		}
