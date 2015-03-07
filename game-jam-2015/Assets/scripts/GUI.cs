@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class GUI : MonoBehaviour {
-
+	public GUIStyle style;
 	// Use this for initialization
 	void Start () {
 	
@@ -11,5 +11,9 @@ public class GUI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+	void OnGUI(){
+		//Points Display
+
 	}
 }
