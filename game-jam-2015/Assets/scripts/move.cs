@@ -3,9 +3,9 @@ using System.Collections;
 
 public class move : MonoBehaviour {
 	public static float distanceTraveled;
-	public float speed = 5f;
-	public float jumpPower = 100f;
-	public bool grounded = true;
+	public float speed;
+	public float jumpPower;
+	public bool canJump = true;
 	public bool hasJumped = false;
 	// Use this for initialization
 	void Start () {
@@ -14,26 +14,28 @@ public class move : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-//		transform.Translate(5f * Time.deltaTime, 0f, 0f);
-		//For moving left/right
-		float motion = Input.GetAxis ("Horizontal");
-		rigidbody2D.velocity = new Vector2 (motion * speed, rigidbody2D.velocity.y);
-		//For jumping
-		if(!grounded && rigidbody2D.velocity.y == 0) {
-			grounded = true;
-		}
-		if (Input.GetButtonDown("Vertical") && grounded == true) {
-			hasJumped = true;
-		}
+		transform.Translate(speed * Time.deltaTime, 0f, 0f);
 
+
+		//For jumping
+		float vertical = Input.GetAxisRaw ("Vertical");
+		if(canJump) {
+			if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)){
+				rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, 0.0f);
+				rigidbody2D.AddForce(Vector2.up * jumpPower);
+				canJump = false;
+			}
+		}
+		
 		distanceTraveled = transform.localPosition.x;
 	}
-	void FixedUpdate (){
-		//If the character has jumped
-		if(hasJumped){
-			rigidbody2D.AddForce(transform.up*jumpPower);
-			grounded = false;
-			hasJumped = false;
-		}
+	void OnCollisionEnter2D(Collision2D coll){
+
+		if (coll.gameObject.tag == "ground") {
+			canJump = true;		
+				}
+		else {
+			canJump = false;
+				}
 	}
 }
