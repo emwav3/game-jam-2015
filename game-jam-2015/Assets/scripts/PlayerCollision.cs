@@ -5,7 +5,7 @@ public class PlayerCollision : MonoBehaviour {
 	public GameState points;
 	public GameObject[]  powerUps;
 	public GameObject powerUp;
-	public int randomNum;
+	int randomNum;
 	public Player playerScript;
 	// Use this for initialization
 	void Start () {
@@ -18,17 +18,21 @@ public class PlayerCollision : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D coll){
-		points = (GameState)GetComponent<GameState> ();
-		//If player collides with the coin
-		if (coll.gameObject.tag == "coin") {
-			points.points += 1;		
-		}
+
 	}
 
 
 	void OnTriggerEnter2D(Collider2D collider){
 		playerScript = (Player)GetComponent<Player>();
-		if (collider.tag == "Powerup") {
+		points = (GameState)GameObject.FindGameObjectWithTag ("stateManager").GetComponent<GameState>();
+//		GameState gameStateScript =(GameState)points.GetComponent<GameState> ();
+		//If player collides with the coin
+		if (collider.gameObject.tag == "coin") {
+			points.points += 1;	
+			Destroy(collider.gameObject);
+		}
+		//If the player collides with a powerUp box
+		if (collider.gameObject.tag == "Powerup") {
 			randomNum = Random.Range(0, powerUps.Length);
 			powerUp = powerUps[randomNum];
 			if(powerUp.tag == "fireball"){
