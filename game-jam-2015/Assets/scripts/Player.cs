@@ -7,6 +7,8 @@ public class Player : MonoBehaviour {
 	public GameState points;
 	public GameObject[]  powerUps;
 	public GameObject powerUp;
+	public GameObject fireball;
+	public GameObject missile;
 	int randomNum;
 
 	// Use this for initialization
@@ -17,19 +19,23 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(hasFireball == true){
-			Debug.Log("fireball");
+			if(Input.GetKeyDown(KeyCode.Space)){
+			Instantiate(fireball, new Vector2(transform.position.x + 2, transform.position.y), Quaternion.identity);
+			Debug.Log("fireball234");
 			hasFireball = false;
+			}
 		}
 		else if(hasRocket == true){
-			Debug.Log("rocket");
+			if(Input.GetKeyDown(KeyCode.Space)){
+				Instantiate(missile, new Vector2(transform.position.x + 2, transform.position.y), Quaternion.identity);
+			Debug.Log("missile432");
 			hasRocket = false;
+			}
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D collider){
-//		playerScript = (Player)GameObject.FindGameObjectWithTag("player").GetComponent<Player>();
 				points = (GameState)GameObject.FindGameObjectWithTag ("stateManager").GetComponent<GameState> ();
-				//		GameState gameStateScript =(GameState)points.GetComponent<GameState> ();
 				//If player collides with the coin
 				if (collider.gameObject.tag == "coin") {
 						points.points += 1;	
@@ -39,10 +45,9 @@ public class Player : MonoBehaviour {
 				if (collider.gameObject.tag == "powerUp") {
 						randomNum = Random.Range (0, powerUps.Length);
 						powerUp = powerUps [randomNum];
-						Debug.Log (powerUp.name.ToString ());
 						if (powerUp.name == "fireball") {
 								hasFireball = true;
-						} else if (powerUp.name == "rocket") {
+						} else if (powerUp.name == "missile") {
 								hasRocket = true;
 						}
 				}
