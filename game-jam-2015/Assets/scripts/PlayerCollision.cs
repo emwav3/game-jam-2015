@@ -23,7 +23,7 @@ public class PlayerCollision : MonoBehaviour {
 
 
 	void OnTriggerEnter2D(Collider2D collider){
-		playerScript = (Player)GameObject.FindGameObjectWithTag("player").GetComponent<Player>();
+		playerScript = (Player)GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 		points = (GameState)GameObject.FindGameObjectWithTag ("stateManager").GetComponent<GameState>();
 //		GameState gameStateScript =(GameState)points.GetComponent<GameState> ();
 		//If player collides with the coin
