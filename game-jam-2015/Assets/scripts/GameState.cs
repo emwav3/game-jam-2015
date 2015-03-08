@@ -12,7 +12,7 @@ public class GameState : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		GameObject guiPoints = GameObject.FindGameObjectWithTag ("guiPoints");
-		Text pointsText =(Text)guiPoints.GetComponent<Text>();
+		Text pointsText =guiPoints.GetComponent<Text>();
 		pointsText.text = "Score: " + points.ToString();
 	}
 }
