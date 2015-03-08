@@ -35,7 +35,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D collider){
-				points = (GameState)GameObject.FindGameObjectWithTag ("stateManager").GetComponent<GameState> ();
+				points = (GameState)GameObject.FindGameObjectWithTag ("stateManager").GetComponent<GameState>();
 				//If player collides with the coin
 				if (collider.gameObject.tag == "coin") {
 						points.points += 1;	
