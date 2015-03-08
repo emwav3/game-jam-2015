@@ -20,14 +20,14 @@ public class Player : MonoBehaviour {
 	void Update () {
 		if(hasFireball == true){
 			if(Input.GetKeyDown(KeyCode.Space)){
-			Instantiate(fireball, new Vector2(transform.position.x + 2, transform.position.y), Quaternion.identity);
+			Instantiate(fireball, new Vector2(transform.position.x + 2, transform.position.y), transform.rotation);
 			Debug.Log("fireball234");
 			hasFireball = false;
 			}
 		}
 		else if(hasRocket == true){
 			if(Input.GetKeyDown(KeyCode.Space)){
-				Instantiate(missile, new Vector2(transform.position.x + 2, transform.position.y), Quaternion.identity);
+				Instantiate(missile, new Vector2(transform.position.x + 2, transform.position.y), transform.rotation);
 			Debug.Log("missile432");
 			hasRocket = false;
 			}
